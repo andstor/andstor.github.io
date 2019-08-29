@@ -1,0 +1,26 @@
+Project:
+  color: green
+
+macOS:
+  color: gray
+
+Moodle:
+  color: moodle
+
+Web:
+  color: gray
+
+Fork:
+  color: yellow
+
+JavaScript:
+  color: yellow
+
+Library:
+  color: light-blue
+
+Open Source:
+  color: blue
+
+Heroku:
+  color: purple

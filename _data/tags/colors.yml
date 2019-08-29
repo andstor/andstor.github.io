@@ -1,0 +1,27 @@
+gray:
+  bg-color: "#f5f5f5"
+  color: "black"
+
+green:
+  bg-color: "#23d160"
+  color: "white"
+
+blue:
+  bg-color: "#4860be"
+  color: "white"
+
+light-blue:
+  bg-color: "#209cee"
+  color: "white"
+
+moodle:
+  bg-color: "#f98012"
+  color: "white"
+
+yellow:
+  bg-color: "#fbf700"
+  color: "black"
+
+purple:
+  bg-color: "#4a4090"
+  color: "white"

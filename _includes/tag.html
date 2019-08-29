@@ -1,0 +1,20 @@
+{% assign tag_data = site.data.tags.tags[tag] %}
+{% assign tag_color = site.data.tags.colors[tag_data.color] %}
+
+{% assign bg_color = tag_color.bg-color %}
+{% assign txt_color = tag_color.color %}
+
+
+
+{% capture class %}tag {% if include.small %}tag-small{% endif %}{% endcapture %}
+{% capture style %}color: {{ txt_color }}; background-color: {{ bg_color }}{% endcapture %}
+
+{% if include.link %}
+{% capture link %}/tag/{{ tag }}{% endcapture %}
+<a href="{{ link | relative_url }}">
+  <span class="{{ class }}" style="{{ style }}">{{ tag }}</span>
+</a>
+
+{% else %}
+<span class="{{ class }}" style="{{ style }}">{{ tag }}</span>
+{% endif %}
