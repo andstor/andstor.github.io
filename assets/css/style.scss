@@ -244,9 +244,19 @@ a > .tag:hover {
 .project-card {
   box-sizing: border-box;
   flex: none;
-  width: calc(33.333% - 20px);
+  width: calc(100% - 20px);
   margin: 10px;
+
+  @media screen and (min-width: $on-medium) {
+    width: calc(50% - 20px);
+  }
+
+  @media screen and (min-width: $on-large) {
+    width: calc(33.333% - 20px);
+  }
 }
+
+
 
 .full-height {
   height: 100%;

@@ -21,10 +21,27 @@ layout: default
         <a href="{{ project.url }}">
           <div class="box full-height">
 
+            {% assign has_thumbnail = false %}
+
+            {% capture thumbnail%}{{ project.name | downcase | replace: " ", "_" }}/thumbnail.png{% endcapture %}
+            {% for coll in site.collections %}
+            {% if coll.label == "projects" %}
+            {% for file in coll.files %}
+              {% if file.path contains thumbnail %}
+                {% assign has_thumbnail = true %}
+              {% endif %}
+            {% endfor %}
+
+            {% endif %}
+            {% endfor %}
+
+            {% if has_thumbnail %}
             <figure class="image">
               {% capture thumbnail%}{{page.dir}}{{ project.name | downcase | replace: " ", "_" }}/thumbnail.png{% endcapture %}
               <img alt="{{ project.name }}" src="{{ thumbnail | relative_url }}">
             </figure>
+            {% endif %}
+
             <h2>
               <span class="title">{{ project.name }}</span>
               {% for tag in project.tags %}
