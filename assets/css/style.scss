@@ -4,6 +4,12 @@
 
 @import "minima";
 
+$brand-color: rgb(236, 72, 153);
+$base-font-size:   18px;
+
+.grey {
+  color: rgb(55, 65, 81);
+}
 
 @function text-color($color) {
   @if (lightness( $color ) > 40) {
@@ -20,7 +26,6 @@
   -o-transition: $args;
   transition: $args;
 }
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto, Helvetica, Arial, sans-serif, apple color emoji, segoe ui emoji, segoe ui symbol;
 }
@@ -29,13 +34,14 @@ body.default {
   min-height: 100vh;
 }
 
+
 .social-media-list {
   display: table;
   margin: 0 auto;
 
   li {
     float: left;
-    margin: 0 5px;
+    margin: 0;
 
     &:first-of-type {
       margin-left: 0
@@ -48,25 +54,49 @@ body.default {
     a {
       display: block;
       padding: $spacing-unit / 4;
-      border: 1px solid $grey-color-light;
-      -webkit-border-radius: 50%;
-      -moz-border-radius: 50%;
-      border-radius: 50%;
+      border: hidden;
+      -webkit-border-radius: 0%;
+      -moz-border-radius: 0%;
+      border-radius: 0%;
       @include transition(background-color .5s ease);
+      .svg-icon {
+        transform: scale(1.25);
+      }
     }
 
     &:hover {
-      a {
-        background-color: $brand-color;
-      }
       .svg-icon {
         color: text-color($brand-color);
-        fill: currentColor;
+      }
+      .grey {
+        color: $brand-color;
       }
     }
   }
 }
 
+.profile {
+  padding-left: 0 !important;
+  .social-media-list {
+    li {
+      margin: 0 5px;
+
+      a {
+        .svg-icon {
+          transform: scale(2);
+        }
+      }
+    }
+  }
+}
+.home {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+}
+
+.col-span-2 {
+  grid-column: span 2/span 2;
+}
 
 .site-title {
   line-height: 43px;
@@ -81,12 +111,20 @@ body.default {
 }
 
 .site-title img {
-  width: 40px;
-  height: 40px;
+  width: 64px;
+  height: 64px;
 }
 
 .site-title span {
-  margin-left: 10px;
+  margin-left: 20px;
+  font-size: x-large;
+}
+
+.site-nav {
+  .page-link {
+    font-weight: 500;
+    font-size: large;
+  }
 }
 
 .lol {
@@ -237,7 +275,7 @@ a > .tag:hover {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-
+  margin-bottom: 15px;
   border: 1px solid #eeed;
 }
 

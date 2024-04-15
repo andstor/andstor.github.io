@@ -1,7 +1,7 @@
 title: André Storhaug
 description: > # this means to ignore newlines until "logo:"
 
-logo : /assets/images/A.svg
+logo : /assets/images/AS.svg
 
 show_excerpts: false # set to true to show excerpts on the homepage
 
@@ -10,7 +10,7 @@ author: André Storhaug
 email: andr3.storhaug@gmail.com
 author_link: https://github.com/andstor
 author_img: https://github.com/andstor.png
-about_author: "I'm a software developer"
+about_author: "I'm a PhD candidate"
 
 
 collections:
