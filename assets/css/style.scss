@@ -89,9 +89,10 @@ body.default {
     }
   }
 }
+
 .home {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-columns: repeat(1,minmax(0,1fr));
 }
 
 .col-span-2 {
@@ -180,6 +181,11 @@ body.default {
   }
   .col-4 {
     flex: 4
+  }
+
+  .home {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
   }
 }
 
