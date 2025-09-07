@@ -10,10 +10,15 @@ author: André Storhaug
 email: andr3.storhaug@gmail.com
 author_link: https://github.com/andstor
 author_img: https://github.com/andstor.png
-about_author: "I'm a PhD candidate"
+about_author: "PhD Student | Department of Computer Science, Norwegian University of Science and Technology (NTNU)"
+#about_author: "I'm a PhD candidate"
 
 
 collections:
+  apps:
+    output: true
+  publications:
+    output: true
   projects:
     output: true
 
@@ -55,9 +60,10 @@ slick:
 # this and add the path to the pages in order as they should show up
 header_pages:
  - about.md
+ - publications.md
+ - apps.md
  - projects.md
  - blog/index.html
- - tags.md
 
 # Build settings
 #theme: jekyll-theme-slick

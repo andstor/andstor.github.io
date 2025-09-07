@@ -2,6 +2,9 @@ Project:
   color: green
 
 macOS:
+  color: salmon
+
+paid:
   color: gray
 
 Moodle:

@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div id="publications">
+    {{ content }}
+
+    {% assign publication_types = site.publications | map: 'type' | compact | uniq %}
+    {% for type in publication_types %}
+      <h2 class="publication-type">{{ type | capitalize }}</h2>
+      <hr />
+      {% assign publications_of_type = site.publications | where: 'type', type %}
+      {% assign years = publications_of_type | map: 'year' | compact | uniq | sort | reverse %}
+      {% for year in years %}
+        <h2 class="publication-year">{{ year }}</h2>
+        <ul>
+        {% for publication in publications_of_type %}
+          {% if publication.year == year %}
+          <li>
+            <h3><b>{{ publication.title }}</b></h3>
+            <p class="authors">{{ publication.authors }}</p>
+            <p class="location">{{ publication.location }}</p>
+            <p class="doi"><a href="https://doi.org/{{ publication.doi }}" target="_blank">{{ publication.doi }}</a></p>
+
+            <div class="links">
+              {% if publication.content %}
+                <a href="javascript:void(0)" onclick="toggleAbstract('abstract-{{ publication.name }}')">[ABS]</a>
+              {% endif %}
+
+              {% if publication.pdf %}
+              <a href="{{ publication.pdf }}" target="_blank">[PDF]</a>
+              {% endif %}
+              {% if publication.code %}
+              <a href="{{ publication.code }}" target="_blank">[Code]</a>
+              {% endif %}
+              <div id="abstract-{{ publication.name }}" style="display: none;">{{ publication.content }}</div>
+            </div>
+            </li>
+          {% endif %}
+        {% endfor %}
+        </ul>
+      {% endfor %}
+    {% endfor %}
+
+  </div>
+
+</article>
+
+<script>
+function toggleAbstract(id) {
+  const element = document.getElementById(id);
+  if (!element) return;
+
+  if (element.style.display === 'none') {
+    element.style.display = 'block';
+  } else {
+    element.style.display = 'none';
+  }
+}
+</script>

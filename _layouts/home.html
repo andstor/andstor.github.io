@@ -2,16 +2,17 @@
 layout: default
 ---
 
+
+
+{%- if page.title -%}
+<h1 class="page-heading">{{ page.title }}</h1>
+{%- endif -%}
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
 
     <div class="hero-body profile">
       <div class="text-center flex-item">
         <img class="author_img" src="{{ site.author_img }}" alt="" width="192" height="192">
-        <h2 class="profile-title">{{ site.author }}</h1>
-        <h3 class="profile-title">{{ site.about_author }}</h2>
+
           <div class="social-links">
             {%- include social.html -%}
           </div>
@@ -20,17 +21,9 @@ layout: default
 
     <div class="hero-body col-span-2">
       <div class="flex-item">
-        <p>
-          I am a PhD candidate at the Norwegian University of Science and Technology (NTNU) with a large passion for new technology.
-          Under the supervision of Professor Jingyue Li, my research focuses on code generation using large language models.
-        </p>
-        <p>
-          In my spare time, I love to contribute to open-source projects.
-        </p>
-</div>
+        <h1 class="profile-title">{{ site.author }}</h1>
+        {{ content }}
+
+      </div>
     </div>
-
-  {{ content }}
-
-
 </div>

@@ -25,3 +25,11 @@ yellow:
 purple:
   bg-color: "#4a4090"
   color: "white"
+
+baby-pink:
+  bg-color: "#ff9ed5"
+  color: "black"
+
+salmon:
+  bg-color: "#ff6f61"
+  color: "white"

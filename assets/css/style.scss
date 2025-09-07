@@ -94,6 +94,21 @@ body.default {
   display: grid;
   grid-template-columns: repeat(1,minmax(0,1fr));
 }
+/*
+#home-header {
+
+  .site-title {
+    width: 50%;
+    span {
+      font-size: $base-font-size * 3;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}*/
 
 .col-span-2 {
   grid-column: span 2/span 2;
@@ -101,11 +116,13 @@ body.default {
 
 .site-title {
   line-height: 43px;
-  font-size: 18px;
+  font-size: $base-font-size;
   font-weight: normal;
   letter-spacing: normal;
   color: #111;
 }
+
+
 
 .site-title:visited {
   color: #111;
@@ -236,8 +253,11 @@ a > .tag:hover {
 
 .box {
   background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(10, 10, 10, 0.1);
+  //box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
   color: #111;
   display: block;
   padding: 1.25rem;
@@ -300,6 +320,55 @@ a > .tag:hover {
   }
 }
 
+.apps-card {
+  box-sizing: border-box;
+  flex: none;
+  width: calc(100% - 20px);
+  margin: 10px;
+
+  @media screen and (min-width: $on-medium) {
+    width: calc(50% - 20px);
+  }
+
+  figure {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    margin-top: 10px;
+    margin-bottom: 3px;
+  }
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+}
+.hero-body.profile {
+  //position: sticky;
+  top: 1rem; /* how far from top */
+  align-self: start; /* so sticky positioning works inside grid/flex */
+}
+
+#publications {
+  .title {
+    font-size: $base-font-size *1.1;
+    font-weight: 700;
+  }
+  .publication-type {
+    margin-top: 60px;
+  }
+  .publication-year {
+    margin-top: 30px;
+  }
+
+  .links {
+  margin-bottom: 30px;
+}
+}
 
 
 .full-height {
@@ -336,6 +405,44 @@ a > .tag:hover {
 #projects .box h2 {
   font-size: 1.7rem;
 }
+
+.app {
+  font-size: $base-font-size;
+  margin: auto;
+  width: calc(100%);
+  @media screen and (min-width: $on-large) {
+    width: calc(70%);
+  }
+}
+.app-content {
+  img {
+    border-radius: 6px;
+    margin-bottom: 32px;
+  }
+}
+
+.app-header {
+  margin-bottom: 160px;
+
+  .app-icon {
+    width: 256px;
+    height: 256px;
+    margin: auto;
+    display: block;
+  }
+
+  h1 {
+    font-size: 4.5rem;
+    margin-bottom: 0;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+
 
 .title, .subtitle {
   word-break: break-word;

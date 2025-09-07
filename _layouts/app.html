@@ -1,0 +1,39 @@
+---
+layout: default
+---
+<article class="post app">
+
+  <header class="post-header app-header text-center">
+    {% assign has_icon = false %}
+
+    {% capture icon%}{{ page.name | downcase | replace: " ", "_" }}/icon.png{% endcapture %}
+    {% for coll in site.collections %}
+    {% if coll.label == "apps" %}
+    {% for file in coll.files %}
+    {% if file.path contains icon %}
+    {% assign has_icon = true %}
+    {% endif %}
+    {% endfor %}
+
+    {% endif %}
+    {% endfor %}
+    {% if has_icon %}
+
+    <figure class="image app-icon">
+      {% capture icon%}{{page.collection}}/{{ page.name | downcase | replace: " ", "_" }}/icon.png{% endcapture %}
+      <img alt="{{ page.name }}" src="{{ icon | relative_url }}" width="128" height="128">
+    </figure>
+    {% endif %}
+    <h1 class="">{{ page.title | escape }}</h1>
+    <h2 class="">{{ page.description }}</h2>
+    <a href="https://apps.apple.com/app/{{ page.bundle_id }}">
+      <img src="/assets/images/download-on-app-store-badge.svg" alt="Download on the App Store" style="margin: auto" height="60px">
+    </a>
+  </header>
+
+    <div class="post-content app-content">
+
+  {{ content }}
+</div>
+
+</article>
