@@ -91,12 +91,18 @@ body.default {
   }
 }
 
+
+.page-content:has(.home) {
+    padding: 0;
+    flex: 0 0 auto;
+}
+
 .home {
   display: grid;
   grid-template-columns: repeat(1,minmax(0,1fr));
 
   @media screen and (min-width: $on-large) {
-    min-height: calc(100vh - 144px);
+      //min-height: calc(100vh - 144px);
   }
 
   .social-media-list {
