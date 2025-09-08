@@ -37,7 +37,8 @@ body.default {
 
 .social-media-list {
   display: table;
-  margin: 0 auto;
+  //margin: 0 auto; // Centering
+  margin: 0 0 0 auto; // Right align
 
   li {
     float: left;
@@ -93,6 +94,24 @@ body.default {
 .home {
   display: grid;
   grid-template-columns: repeat(1,minmax(0,1fr));
+
+  @media screen and (min-width: $on-large) {
+    min-height: calc(100vh - 144px);
+  }
+
+  .social-media-list {
+    margin: 0;
+    li {
+      margin: 10px 5px;
+
+      a {
+        .svg-icon {
+          transform: scale(2);
+        }
+      }
+    }
+  }
+
 }
 /*
 #home-header {
@@ -143,6 +162,11 @@ body.default {
     font-weight: 500;
     font-size: large;
   }
+}
+
+.page-content {
+  padding: 0;
+  flex: 1 0 auto;
 }
 
 .lol {
@@ -202,7 +226,7 @@ body.default {
 
   .home {
     display: grid;
-    grid-template-columns: repeat(3,minmax(0,1fr));
+    grid-template-columns: repeat(2,minmax(0,1fr));
   }
 }
 
@@ -289,7 +313,7 @@ a > .tag:hover {
 .hero-body {
   flex-grow: 1;
   flex-shrink: 0;
-  padding: 3rem 1.5rem;
+  //padding: 3rem 1.5rem 0 1.5rem;
 }
 
 .hero-body {
@@ -323,15 +347,18 @@ a > .tag:hover {
 .apps-card {
   box-sizing: border-box;
   flex: none;
-  width: calc(100% - 20px);
-  margin: 10px;
+  width: 100%;
 
-  @media screen and (min-width: $on-medium) {
+  @media screen and (min-width: $on-large) {
     width: calc(50% - 20px);
   }
 
   figure {
     margin-bottom: 0;
+
+    img {
+      max-width: unset;
+    }
   }
 
   h2 {
@@ -350,7 +377,16 @@ a > .tag:hover {
 .hero-body.profile {
   //position: sticky;
   top: 1rem; /* how far from top */
-  align-self: start; /* so sticky positioning works inside grid/flex */
+  align-self: end; /* so sticky positioning works inside grid/flex */
+}
+
+.profile-title {
+  font-size: 3.3rem;
+  font-weight: 500;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
 }
 
 #publications {
