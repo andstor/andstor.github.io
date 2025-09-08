@@ -458,7 +458,7 @@ a > .tag:hover {
 }
 
 .app-header {
-  margin-bottom: 160px;
+  height: calc(100vh - 144px);
 
   .app-icon {
     width: 256px;
