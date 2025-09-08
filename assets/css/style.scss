@@ -484,12 +484,12 @@ a > .tag:hover {
     font-weight: 700;
 
     @media screen and (min-width: $on-medium) {
-      font-size: 5rem;
+      font-size: 4.5rem;
       line-height: 1;
     }
 
     @media screen and (min-width: $on-large) {
-      font-size: 7.5rem;
+      font-size: 6rem;
       line-height: 1;
     }
   }
@@ -502,6 +502,11 @@ a > .tag:hover {
     @media screen and (min-width: $on-medium) {
       font-size: 2.25rem;
       line-height: calc(2.5/2.25);
+    }
+
+    @media screen and (min-width: $on-large) {
+      font-size: 2.75rem;
+      line-height: calc(2.5/2.75);
     }
   }
 
