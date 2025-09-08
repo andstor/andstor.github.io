@@ -463,8 +463,12 @@ a > .tag:hover {
   }
 }
 
+
+
+
 .app-header {
-  height: calc(100vh - 144px);
+  //height: calc(100vh - 144px);
+  margin-bottom: 10rem;
 
   .app-icon {
     width: 256px;
@@ -474,14 +478,33 @@ a > .tag:hover {
   }
 
   h1 {
-    font-size: 4.5rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    line-height: 1;
     font-weight: 700;
+
+    @media screen and (min-width: $on-medium) {
+      font-size: 5rem;
+      line-height: 1;
+    }
+
+    @media screen and (min-width: $on-large) {
+      font-size: 7.5rem;
+      line-height: 1;
+    }
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    line-height: calc(2/1.5);
+    margin-bottom: 2rem;
+
+    @media screen and (min-width: $on-medium) {
+      font-size: 2.25rem;
+      line-height: calc(2.5/2.25);
+    }
   }
+
 }
 
 
