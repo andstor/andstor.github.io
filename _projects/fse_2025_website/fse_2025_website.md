@@ -5,7 +5,7 @@ type: community
 name: "FSE 2025 Website"
 description: "ACM International Conference on the Foundations of Software Engineering (FSE) website"
 source_control_url: "https://github.com/KQMATH/tex2max"
-tags: [JavaScript, Library, NPM, Open Source]
+tags: ["conference", "website"]
 ---
 I had the pleasure to serve on the organizing committee as the Web Co-Chair of the FSE 2025 conference.
 
