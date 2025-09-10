@@ -11,3 +11,5 @@ STACK is an assessment system for mathematics, science and related disciplines.
 
 This fork is focusing on an improved GUI for mathematical typing.
 It aim to provide both a visual and more intuitive way for students to write their mathematical answers.
+
+![Thumbnail](thumbnail.png)

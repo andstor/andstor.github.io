@@ -12,3 +12,5 @@ JazzQuiz is designed to be used in face-to-face lessons. The teacher may plan qu
 During the lesson, the teacher starts the quiz. Students can now connect to this quiz. Once the teacher is satisfied that all students have connected to the quiz, they can click on Start Quiz Depending on the question settings the question will end automatically, or will need to be ended via the instructor's End question button. The teacher can start a vote, with the selected responses, which students can answer.
 
 The teacher can, at a later date, go back through the results and, for each question, see exactly what answer each student gave. The repolls are treated as separate questions, and you will get a correct order in the review page.
+
+![Thumbnail](thumbnail.png)
