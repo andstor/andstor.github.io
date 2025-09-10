@@ -24,9 +24,11 @@
         <p>{{- site.description | escape -}}</p>
       </div>
 
+      {% if page.layout != 'home' %}
       <div class="social-links">
         {%- include social.html -%}
       </div>
+      {% endif %}
     </div>
 
   </div>

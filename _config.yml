@@ -33,13 +33,15 @@ slick:
 
   # generate social links in footer
   social_links:
+    huggingface: andstor
+    google_scholar: XEhRmSgAAAAJ
     twitter: AndreStorhaug
     github:  andstor
     rss: rss
     # dribbble: jekyll
     facebook: andre.storhaug.3
     # flickr:   jekyll
-    # instagram: jekyll
+    instagram: andrestorhaug
     linkedin: andré-storhaug
     # pinterest: jekyll
     # youtube: jekyll
@@ -73,3 +75,5 @@ plugins:
   - jekyll-seo-tag
   - jemoji
   - jekyll-paginate
+
+google_analytics: G-32XVKHEXT8

@@ -4,7 +4,7 @@
 
 @import "minima";
 
-$brand-color: rgb(236, 72, 153);
+$brand-color: rgb(0, 0, 0);
 $base-font-size:   18px;
 
 .grey {
@@ -397,9 +397,15 @@ a > .tag:hover {
 
 #publications {
   .title {
-    font-size: $base-font-size *1.1;
+    font-size: $base-font-size * 1.1;
     font-weight: 700;
   }
+
+  h3 {
+    font-size: $base-font-size * 1;
+    font-weight: 500;
+  }
+
   .publication-type {
     margin-top: 60px;
   }
@@ -409,7 +415,10 @@ a > .tag:hover {
 
   .links {
   margin-bottom: 30px;
-}
+  }
+  .authors, .location {
+    line-height: 1;
+  }
 }
 
 

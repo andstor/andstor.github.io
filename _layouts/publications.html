@@ -18,32 +18,29 @@ layout: default
       {% assign years = publications_of_type | map: 'year' | compact | uniq | sort | reverse %}
       {% for year in years %}
         <h2 class="publication-year">{{ year }}</h2>
-        <ul>
         {% for publication in publications_of_type %}
           {% if publication.year == year %}
-          <li>
             <h3><b>{{ publication.title }}</b></h3>
-            <p class="authors">{{ publication.authors }}</p>
-            <p class="location">{{ publication.location }}</p>
-            <p class="doi"><a href="https://doi.org/{{ publication.doi }}" target="_blank">{{ publication.doi }}</a></p>
+            <p class="authors"><b>Authors:</b> {{ publication.authors }}</p>
+            <p class="location"><b>Location:</b> {{ publication.location }}</p>
+
 
             <div class="links">
+              <a href="https://doi.org/{{ publication.doi }}" target="_blank">{{ publication.doi }}</a>
               {% if publication.content %}
-                <a href="javascript:void(0)" onclick="toggleAbstract('abstract-{{ publication.name }}')">[ABS]</a>
+                [<a href="javascript:void(0)" onclick="toggleAbstract('abstract-{{ publication.name }}')">ABS</a>]
               {% endif %}
 
               {% if publication.pdf %}
-              <a href="{{ publication.pdf }}" target="_blank">[PDF]</a>
+              [<a href="{{ publication.pdf }}" target="_blank">PDF</a>]
               {% endif %}
               {% if publication.code %}
-              <a href="{{ publication.code }}" target="_blank">[Code]</a>
+              [<a href="{{ publication.code }}" target="_blank">Code</a>]
               {% endif %}
               <div id="abstract-{{ publication.name }}" style="display: none;">{{ publication.content }}</div>
             </div>
-            </li>
           {% endif %}
         {% endfor %}
-        </ul>
       {% endfor %}
     {% endfor %}
 
