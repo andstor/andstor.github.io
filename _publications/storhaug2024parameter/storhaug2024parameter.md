@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Parameter-Efficient Fine-Tuning of Large Language Models for Unit Test Generation: An Empirical Study"
-type: Conference publications
+type: Preprints
 name: "storhaug2024parameter"
 year: 2024
 doi: "10.48550/arXiv.2411.02462"
