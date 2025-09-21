@@ -12,10 +12,10 @@ import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.m
 
 async function initFlorence() {
   console.log("Florence result22");
-  //const preloader = document.getElementById("preloader");
+  const preloader = document.getElementById("preloader");
 
   // Show preloader
-  //preloader.style.display = "flex";
+  preloader.style.display = "flex";
 
   const img = document.getElementById("profile-pic");
   const cacheKey = "florence_results";
@@ -51,7 +51,7 @@ async function initFlorence() {
     sessionStorage.setItem(cacheKey, JSON.stringify(data));
   }
 
-  //preloader.style.display = "none";
+  preloader.style.display = "none";
 
 
   function drawOverlayDivs() {
@@ -138,36 +138,67 @@ initFlorence();
 }
 /* Wave dots preloader */
 .preloader {
+  /* display: flex; */
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 99%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 40px;
+  top: calc(100% - 37px);
+  right: 5%;
   z-index: 20;
 }
 
-.preloader span {
-  width: 8px;
-  height: 8px;
-  margin: 0 3px;
-  background: lightslategray;
-  border-radius: 50%;
-  display: inline-block;
-  animation: wave 1.2s infinite ease-in-out;
-}
 
-.preloader span:nth-child(1) { animation-delay: 0s; }
-.preloader span:nth-child(2) { animation-delay: 0.2s; }
-.preloader span:nth-child(3) { animation-delay: 0.4s; }
-
-@keyframes wave {
-  0%, 60%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-8px); }
-}
 </style>
 
 
+
+<style>
+.loader svg {
+  width: 80px;
+  height: 80px;
+}
+
+.loader svg path{
+  fill: var(--loader-color, #FF7C00);
+}
+
+.loader.margin {
+  margin: 16px;
+}
+.loader.margin p {
+  margin-top: 10px;
+}
+.top, .bottom {
+  animation-duration: 4s; /* 4 hops × 1s each */
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.9, 0, 0.1, 1); /* fast move, slow pause */
+}
+
+/* top group */
+.top {
+  animation-name: top-step;
+}
+
+/* bottom group */
+.bottom {
+  animation-name: bottom-step;
+}
+
+@keyframes top-step {
+  0%   { transform: translate(125px, 140px); }
+  25%  { transform: translate(-125px, 140px); }
+  50%  { transform: translate(-125px, 0); }
+  75%  { transform: translate(125px, 0); }
+  100% { transform: translate(125px, 140px); } /* loop back */
+}
+
+@keyframes bottom-step {
+  0%   { transform: translate(-125px, -140px); }
+  25%  { transform: translate(125px, -140px); }
+  50%  { transform: translate(125px, 0); }
+  75%  { transform: translate(-125px, 0); }
+  100% { transform: translate(-125px, -140px); } /* loop back */
+}
+</style>
 
