@@ -16,6 +16,24 @@ layout: default
         <div class="social-links">
             {%- include social.html -%}
         </div>
+
+          <div class="detect-input-container">
+            <input
+              type="text"
+              id="custom-text"
+              value="human face"
+              placeholder="Enter object or phrase to detect..."
+              class="detect-input"
+            >
+            <button
+              id="submit-prompt"
+              class="detect-button"
+            >
+              Detect
+            </button>
+          </div>
+
+
       </div>
     </div>
 
@@ -80,6 +98,9 @@ layout: default
             </svg>
             <p>Detecting...</p>
           </div>
+
+
+
 
 
       </div>

@@ -10,21 +10,28 @@ In my spare time, I love to contribute to open-source projects.
 <script type="module">
 import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client/dist/index.min.js";
 
-async function initFlorence() {
-  console.log("Florence result22");
+async function runFlorence(taskText = "human face") {
+  console.log("Running Florence with text_input:", taskText);
   const preloader = document.getElementById("preloader");
-
-  // Show preloader
-  preloader.style.display = "flex";
-
   const img = document.getElementById("profile-pic");
-  const cacheKey = "florence_results";
+  const detectButton = document.getElementById("submit-prompt");
+  const cacheKey = "florence_results_" + taskText;
 
-  // Check if cached
+  // Show preloader and disable button
+  preloader.style.display = "flex";
+  detectButton.disabled = true;
+  detectButton.classList.add("disabled");
+  const originalText = detectButton.textContent;
+  detectButton.textContent = "Detecting…";
+
+  // Remember last prompt
+  sessionStorage.setItem("florence_last_prompt", taskText);
+
+  // Check cache
   let data;
   const cached = sessionStorage.getItem(cacheKey);
   if (cached) {
-    console.log("Using cached detection results");
+    console.log("Using cached detection results for:", taskText);
     data = JSON.parse(cached);
   } else {
     const app = await Client.connect("andstor/Florence-2");
@@ -34,25 +41,24 @@ async function initFlorence() {
     const exampleImage = await response_0.blob();
 
     const task = "Caption to Phrase Grounding";
-    //const task = "Object Detection";
     // Get Florence detection
-    const result = await app.predict("/process_image", { 
+    const result = await app.predict("/process_image", {
       image: exampleImage,
       task_prompt: task,
-      text_input: "human face",
-      model_id: "microsoft/Florence-2-base",
+      text_input: taskText,
+      model_id: "microsoft/Florence-2-base-ft",
     });
 
     console.log(result.data);
     data = JSON.parse(result.data[0])["<CAPTION_TO_PHRASE_GROUNDING>"];
-    //data = JSON.parse(result.data[0])["<OD>"];
-
-    // Save to sessionStorage
     sessionStorage.setItem(cacheKey, JSON.stringify(data));
   }
 
+  // Hide preloader and re-enable button
   preloader.style.display = "none";
-
+  detectButton.disabled = false;
+  detectButton.classList.remove("disabled");
+  detectButton.textContent = originalText;
 
   function drawOverlayDivs() {
     const container = document.getElementById("overlay-container");
@@ -70,7 +76,6 @@ async function initFlorence() {
       const width = (x2 - x1) * scaleX;
       const height = (y2 - y1) * scaleY;
 
-      // Box
       const boxDiv = document.createElement("div");
       boxDiv.classList.add("bbox");
       boxDiv.style.left = `${left}px`;
@@ -78,33 +83,52 @@ async function initFlorence() {
       boxDiv.style.width = `${width}px`;
       boxDiv.style.height = `${height}px`;
 
-      // Label
       const labelDiv = document.createElement("div");
       labelDiv.classList.add("bbox-label");
       labelDiv.textContent = data.labels[i];
-
       boxDiv.appendChild(labelDiv);
       container.appendChild(boxDiv);
     });
   }
 
-  // Draw initially once image is loaded
-  if (img.complete) {
-    drawOverlayDivs();
-  } else {
-    img.addEventListener("load", drawOverlayDivs);
-  }
+  // Draw once image is loaded
+  if (img.complete) drawOverlayDivs();
+  else img.addEventListener("load", drawOverlayDivs);
 
-  // Watch for image resizing
+  // Watch for resizing
   const resizeObserver = new ResizeObserver(drawOverlayDivs);
   resizeObserver.observe(img);
 }
 
-initFlorence();
+// 🔹 Restore last cached value or default
+const lastPrompt = sessionStorage.getItem("florence_last_prompt") || "human face";
+document.getElementById("custom-text").value = lastPrompt;
+runFlorence(lastPrompt);
+
+// 🔹 Submit button handler
+document.getElementById("submit-prompt").addEventListener("click", () => {
+  const textInput = document.getElementById("custom-text").value.trim();
+  if (textInput.length === 0) return;
+  runFlorence(textInput);
+});
+
+// 🔹 Submit on Enter key
+document.getElementById("custom-text").addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    document.getElementById("submit-prompt").click();
+  }
+});
 </script>
 
-
 <style>
+/* 🔸 Disabled detect button styling */
+#submit-prompt.disabled {
+  background-color: #9ca3af; /* Gray out */
+  cursor: not-allowed;
+  opacity: 0.7;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
 
 #overlay-container {
   position: relative;
@@ -200,5 +224,44 @@ initFlorence();
   75%  { transform: translate(-125px, 0); }
   100% { transform: translate(-125px, -140px); } /* loop back */
 }
+
+
+
+
+  
+  .detect-input {
+    padding: 8px;
+    width: 240px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .detect-button {
+    padding: 8px 14px;
+    margin-left: 8px;
+    background-color: #FF7C00;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, opacity 0.2s;
+    font-size: 14px;
+  }
+
+  .detect-button:hover:not(:disabled) {
+    background-color: #e56f00;
+  }
+
+  .detect-button:disabled {
+    background-color: #ccc;
+    color: #777;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .detect-input-container {
+    padding-top: 40px;
+  }
+
 </style>
 
