@@ -65,7 +65,7 @@ header_pages:
  - publications.md
  - apps.md
  - projects.md
- - blog/index.html
+# - blog/index.html
 
 # Build settings
 #theme: jekyll-theme-slick

@@ -2,8 +2,7 @@
 layout: home
 ---
 
-I am a PhD candidate at the Norwegian University of Science and Technology (NTNU) with a large passion for new technology.
-Under the supervision of Professor Jingyue Li, my research focuses on code generation using large language models.
+I am a **Data Scientist** at **Microsoft** working in M365 Core, where I build LLM‑powered inference systems that enable smarter and more helpful Copilot experiences. Alongside my industry work, I am a **PhD candidate** at the **Norwegian University of Science and Technology (NTNU)**, researching large language models for code generation and software security under the supervision of Professor Jingyue Li. I hold a Master of Science in Engineering degree (Sivilingeniør) and a Bachelor of Engineering in Computer Science from NTNU.
 
 In my spare time, I love to contribute to open-source projects.
 
